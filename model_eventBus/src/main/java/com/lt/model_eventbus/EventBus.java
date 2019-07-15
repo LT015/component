@@ -64,10 +64,7 @@ public class EventBus {
             clazz = clazz.getSuperclass();
         }
 
-
-
         return  list;
-
 
     }
 
