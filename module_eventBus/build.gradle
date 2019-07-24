@@ -1,4 +1,8 @@
-apply plugin: 'com.android.library'
+if (isModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -15,12 +19,24 @@ android {
         //Arouter路由配置
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
 
     }
-
+    sourceSets {
+        main {
+            if (isModule.toBoolean()) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                //集成开发模式下排除debug文件夹中的所有Java文件
+                java {
+                    exclude 'debug/**'
+                }
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -32,15 +48,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    // Support libraries
-    api deps.support.app_compat
-    api deps.constraint_layout
 
-
-    testImplementation deps.junit
-    androidTestImplementation deps.runner
-    androidTestImplementation deps.espresso_core
-
-    //router
-    api deps.arouter_api
+    annotationProcessor deps.arouter_compiler
+    implementation project(path: ':lib_common')
 }

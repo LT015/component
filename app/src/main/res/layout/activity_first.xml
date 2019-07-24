@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".FirstActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,6 +12,6 @@
         android:textSize="20sp"
         android:layout_centerInParent="true"
         android:onClick="judgement"
-        android:text="main界面"/>
+        android:text="app界面"/>
 
 </RelativeLayout>

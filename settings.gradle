@@ -1,1 +1,1 @@
-include ':module_app', ':module_main', ':lib_common', ':model_eventBus'
+include ':app', ':module_main', ':lib_common', ':module_eventBus'

@@ -1,46 +1,38 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion build_versions.target_sdk
-
-
     defaultConfig {
+        applicationId "com.lt.component"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         //Arouter路由配置
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
-
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    // Support libraries
-    api deps.support.app_compat
-    api deps.constraint_layout
+    annotationProcessor deps.arouter_compiler
+    implementation project(path: ':lib_common')
 
+    if (!isModule.toBoolean()) {
+        implementation project(path: ':module_main')
+        implementation project(path: ':module_eventBus')
+    }
 
-    testImplementation deps.junit
-    androidTestImplementation deps.runner
-    androidTestImplementation deps.espresso_core
-
-    //router
-    api deps.arouter_api
 }
