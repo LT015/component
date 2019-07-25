@@ -36,7 +36,7 @@ dependencies {
     api deps.support.app_compat
     api deps.constraint_layout
 
-
+    api deps.gson
     testImplementation deps.junit
     androidTestImplementation deps.runner
     androidTestImplementation deps.espresso_core

@@ -1,6 +1,6 @@
 package debug;
 
-import com.lt.module_common.base.BaseApplication;
+import com.lt.lib_common.base.BaseApplication;
 
 public class EventBusApplication extends BaseApplication {
 

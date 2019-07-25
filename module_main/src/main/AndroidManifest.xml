@@ -3,7 +3,7 @@
     package="com.lt.module_main">
 
     <application>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".activity.MainActivity"></activity>
     </application>
 
 </manifest>
