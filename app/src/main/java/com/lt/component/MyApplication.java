@@ -1,7 +1,7 @@
 package com.lt.component;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.lt.module_common.base.BaseApplication;
+import com.lt.lib_common.base.BaseApplication;
 
 public class MyApplication extends BaseApplication {
 

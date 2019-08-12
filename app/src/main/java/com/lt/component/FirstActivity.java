@@ -41,7 +41,7 @@ public class FirstActivity extends AppCompatActivity {
 
         ARouter.getInstance().build("/main/main")
                 .withString("msg", "从app模块跳转")
-                .withSerializable("user",user)
+                .withObject("user",user)
                 .navigation();
     }
 
